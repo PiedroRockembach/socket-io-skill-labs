@@ -27,6 +27,7 @@ const Login = () => {
   }
   return(
     <section className="login-page">
+    {/*
     <CardHeader className="header-login">
       Login
     </CardHeader>
@@ -54,6 +55,7 @@ const Login = () => {
         Enviar
       </Button>
     </Form>
+  */}
     <Button variant="danger" className="google-button" onClick={ getLogin }>
         Login com Google
     </Button>

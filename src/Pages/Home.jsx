@@ -5,10 +5,12 @@ import { collection, limit, orderBy, query } from "firebase/firestore";
 import db from "../firebase";
 import context from "../context/context";
 import { CardHeader } from "react-bootstrap";
+import Help from "./help";
 
 function Home() {
   const [text, setText] = useState('');
   const { user } = useContext(context)
+  const [ help, setHelp] = useState(false);
   
   const [messages, loadingMessage, error] = useCollection(
     query(collection(db, 'messages'), orderBy('created', 'asc'), limit(10)), 
@@ -25,39 +27,43 @@ function Home() {
     console.log(text);
     setText('');
   }
-  if(!loadingMessage) messages.docs.map(doc => console.log('value: ', doc.data()))
-  
   return (
     <section className="chat">
     <CardHeader className="chat-header">
       Saúde
       <img src={ user.photoURL } alt="" />
     </CardHeader>
+    {help ? <Help /> : (
+
+      <>
+      <section className="chat-section">
+
+{!loadingMessage && messages.docs.map((doc, index) => {
+  const curUser = doc.data();
+  return (
+    <div key={`msg-${index}`} className={`message ${
+      curUser.user.uid == user.uid ? 'my-text' : 'others-text'
+    }`}>
     
-    <section className="chat-section">
-      {!loadingMessage && messages.docs.map((doc, index) => {
-        const curUser = doc.data();
-        return (
-          <div key={`msg-${index}`} className={`message ${
-            curUser.user.uid == user.uid ? 'my-text' : 'others-text'
-            }`}> 
-          <span>{curUser.user.name}</span>
-          <img src={curUser.user.photoURL || ''} alt="" />
-          <p>{curUser.message}</p>
-          </div>
-        )
-      })}
-    </section>
-      <div className="chat-input">
-        <form action="" onSubmit={send}>
-          <input type="text" onChange={handleText} value={text}/>
-          <button>
-            {'>'}
-          </button>
-        </form>
-      </div>
+    <span>{curUser.user.name}</span>
+    <img src={curUser.user.photoURL || ''} alt="" />
+    <p>{curUser.message}</p>
+    </div>
+  )
+})}
+</section>
+<div className="chat-input">
+  <form action="" onSubmit={send}>
+    <input type="text" onChange={handleText} value={text}/>
+    <button>
+      {'>'}
+    </button>
+  </form>
+</div>
+      </>
+        )}
     <footer>
-      <button>?</button>
+      <button onClick={() => setHelp(!help)}>?</button>
     </footer>
     </section>
   );

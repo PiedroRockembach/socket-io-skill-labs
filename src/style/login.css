@@ -5,13 +5,16 @@
   justify-content: stretch;
   background-color: #f3f3f3;
   padding: 20px 10px
+  
 }
 .header-login {
   display: flex;
   width: 100vw;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  padding: 10px 0;
 }
 
 .form-login {
@@ -28,8 +31,25 @@
   align-self: center;
 }
 .google-button {
+  margin: auto;
+}
+
+.help {
   display: flex;
-  margin: 10px;
-  align-self: center;
-  justify-self:  center;
+  flex-flow: column;
+  align-items: center;
+  text-align: center;
+  font-size: large;
+  font-weight: 600;
+  height: 100%;
+  margin-top: 40px;
+  padding: 30px;
+  justify-content: space-around;
+
+
+}
+
+.help > h1 {
+  font-size:xx-large;
+  margin: 20px auto;
 }
