@@ -23,8 +23,8 @@ function Home() {
   }
   const send = async (e) => {
     e.preventDefault();
+    if (text === '') return;
     sendMessage(text, user);
-    console.log(text);
     setText('');
   }
   return (

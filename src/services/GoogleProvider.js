@@ -8,8 +8,6 @@ const authenticate = async () => {
   try{
     const credential = GoogleAuthProvider.credentialFromResult(result)
     const user = result.user;
-    console.log('user: ', user);
-    console.log('credential: ', credential);
     return { credential, user };
   } catch(error) {
     console.log('Error code: ', error.code)
