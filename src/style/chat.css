@@ -14,6 +14,7 @@
   align-items: center;
 }
 .chat-header {
+  position: relative;
   display: flex;
   flex-flow: column;
   background-color: #03124F;
@@ -21,13 +22,16 @@
   color: white;
   align-items: center;
   height: 10vh;
-  margin-bottom: 40px;
   width: 100%;
 }
 .chat-header > img {
   height: 50px;
   border-radius: 50%;
   border: solid 5px #FD7E00;
+  z-index: 10;
+  position: absolute;
+  bottom: 0;
+  transform: translate(0, 25px);
 
 }
 footer {
@@ -54,6 +58,7 @@ footer > button {
   flex-direction: column;
   justify-content: space-around;
   height: 83vh;
+  padding-top: 120px;
   width: 90%;
   overflow-y: scroll;
 
