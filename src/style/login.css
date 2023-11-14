@@ -1,0 +1,35 @@
+.login-page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  justify-content: stretch;
+  background-color: #f3f3f3;
+  padding: 20px 10px
+}
+.header-login {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.form-login {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  border: solid 1px rgb(82, 82, 82);
+  margin: 0 10px;
+}
+
+.form-login > button {
+  align-self: center;
+}
+.google-button {
+  display: flex;
+  margin: 10px;
+  align-self: center;
+  justify-self:  center;
+}
